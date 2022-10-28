@@ -1,3 +1,11 @@
+# This fork of Wikiteam3
+
+Addresses a bug in `dumpgenerator/util.py`. See elsiehupp/wikiteam3#29:
+
+> TypeError: cannot use a string pattern on a bytes-like object
+
+When this issue is addressed, this fork should be deleted and the DS-Import repo, which installs on Wikiteam3, should be updated to install [elsiehupp/wikiteam3](https://github.com/elsiehupp/wikiteam3).
+
 # `wikiteam3`
 
 ***We archive wikis, from Wikipedia to the tiniest wikis***
