@@ -68,8 +68,17 @@ def cleanXML(xml=""):
     # for Windows compatibility.
     # If the encoding has to stay as is, we'll have
     # to change all the file encodings, as well.
+    #
+    # DE 2022-10-28: temporary hot fix to address type error; see
+    #
+    #       https://github.com/elsiehupp/wikiteam3/issues/29
+    #
+    # Error is TypeError: cannot use a string pattern on a bytes-like object
+    # Reason: Incoming XML is a bytes object, not a string
+    # Source repo should be used once the issue is addressed there
+    xml = xml.decode('utf-8') if isinstance(xml, bytes) else xml
     if re.search(r"</siteinfo>\n", xml):
-        xml = xml.split("</siteinfo>\n")[1].encode("utf-8")
+        xml = xml.split("</siteinfo>\n")[1]
     if re.search(r"</mediawiki>", xml):
-        xml = xml.split("</mediawiki>")[0].encode("utf-8")
+        xml = xml.split("</mediawiki>")[0]
     return xml
